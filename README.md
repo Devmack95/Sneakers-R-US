@@ -16,7 +16,7 @@ Sneakers R' Us is a website for your local sneaker heads to safely buy/sell thei
 
 ## ERD Entity Relationship Diagram
 
-#Built With
+## Built With
 * [React] (https://reactjs.org/) - Front-End JavaScript library
 * [Rails] (https://rubyonrails.org/) - Back-End Framework
 * [WireFrame] (https://wireframe.cc/) - WireFrame
