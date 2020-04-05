@@ -2,12 +2,13 @@
 
 ## Description
 
-Sneakers R' Us is a website for your local sneaker heads to safely buy/sell their new/used sneakers. They can also find links to other websites to buy accessories for their sneakers. 
+Sneakers R' Us is a website for your local sneaker head to safely buy/sell their new/used sneakers. They can also buy accessories for their sneakers or find accessories links for other websites.
 
 ## MVP
 * Back-end Routes
 * Front-end Design
 * CSS styling
+* Links to other websites
 
 ## Post-MVP
 * Communication between buyer and seller
@@ -17,7 +18,7 @@ Sneakers R' Us is a website for your local sneaker heads to safely buy/sell thei
 ## Component Heirarchy
 
 ## ERD Entity Relationship Diagram
-
+![ERD Image](https://i.imgur.com/xkbqmWj.png)
 ## Built With
 * [React](https://reactjs.org/) - Front-End JavaScript library
 * [Rails](https://rubyonrails.org/) - Back-End Framework
