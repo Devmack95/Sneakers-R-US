@@ -8,9 +8,9 @@ Sneakers R' Us is a website for your local sneaker head to safely buy/sell their
 * Back-end Routes
 * Front-end Design
 * CSS styling
-* Links to other websites
 
 ## Post-MVP
+* Links to other websites
 * Communication between buyer and seller
 
 ## Wireframes
@@ -32,6 +32,7 @@ Sneakers R' Us is a website for your local sneaker head to safely buy/sell their
 ![Update Post](https://i.imgur.com/8s1WpZq.png)
 
 ## Component Heirarchy
+![Component Heirarchy](https://i.imgur.com/j3NNbU3.png)
 
 ## ERD Entity Relationship Diagram
 ![ERD Image](https://i.imgur.com/ctorr2X.png)
@@ -47,12 +48,10 @@ Sneakers R' Us is a website for your local sneaker head to safely buy/sell their
 * get '/sneakers/:id', to: 'sneakers#show'
 * post 'sneakers/', to: 'sneakers#create'
 * put 'sneakers/:id', to: 'sneakers#update'
-
 * get '/accessories/', to: 'accessories#index'
 * get '/accessories/:id', to: 'accessories#show'
 * post 'accessories/', to: 'accessories#create'
 * put 'accessories/:id', to: 'accessories#update'
-
 * post '/auth/login', to: 'authentication#login'
 * get '/auth/verify', to: 'authentication#verify'
 
