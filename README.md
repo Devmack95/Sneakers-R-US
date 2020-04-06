@@ -5,9 +5,13 @@
 Sneakers R' Us is a website for your local sneaker head to safely buy/sell their new/used sneakers. They can also buy accessories for their sneakers or find accessories links for other websites.
 
 ## MVP
-* Back-end Routes
-* Front-end Design
-* CSS styling
+* Rails Backend
+* React Frontend
+* Auth
+* 3 related models
+* Associations 
+* Full CRUD
+* Deployed on Surge/Heroku
 
 ## Post-MVP
 * Links to other websites
