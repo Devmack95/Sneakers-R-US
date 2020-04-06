@@ -34,7 +34,7 @@ Sneakers R' Us is a website for your local sneaker head to safely buy/sell their
 ## Component Heirarchy
 
 ## ERD Entity Relationship Diagram
-![ERD Image](https://i.imgur.com/R2i0xIW.png)
+![ERD Image](https://i.imgur.com/ctorr2X.png)
 
 ## Built With
 * [React](https://reactjs.org/) - Front-End JavaScript library
@@ -43,11 +43,18 @@ Sneakers R' Us is a website for your local sneaker head to safely buy/sell their
 * [Draw.io](https://www.draw.io/) - ERD 
 
 ## List of server-side routes
-* 
-* 
-* 
-* 
-* 
+* get '/sneakers/', to: 'sneakers#index'
+* get '/sneakers/:id', to: 'sneakers#show'
+* post 'sneakers/', to: 'sneakers#create'
+* put 'sneakers/:id', to: 'sneakers#update'
+
+* get '/accessories/', to: 'accessories#index'
+* get '/accessories/:id', to: 'accessories#show'
+* post 'accessories/', to: 'accessories#create'
+* put 'accessories/:id', to: 'accessories#update'
+
+* post '/auth/login', to: 'authentication#login'
+* get '/auth/verify', to: 'authentication#verify'
 
 ## An explanation of the major challenges you expect to face while building this app
 * I think the major challenge i expect to face will be creating the back-end routes. I am still getting more familiar with Ruby on Rails but with more practice i will become more comfortable
