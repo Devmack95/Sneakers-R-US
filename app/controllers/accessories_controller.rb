@@ -10,6 +10,7 @@ class AccessoriesController < ApplicationController
 
   # GET /accessories/1
   def show
+    @accessories = Accessory.find(:id)
     render json: @accessory
   end
 

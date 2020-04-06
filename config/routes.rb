@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
-  
-
-
-
-
   resources :accessories
   resources :sneakers
+
   #====================Auth====================
   post '/auth/login', to: 'authentication#login'
   get '/auth/verify', to: 'authentication#verify'
