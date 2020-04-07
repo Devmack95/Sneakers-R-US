@@ -31,11 +31,14 @@ class Cointainer extends Component {
 
           <Route exact path={'/'} component={Home} />
 
-          <Route path={'/sneakers'} render={(props) => (
-            <Sneakers
-              sneakers={this.state.sneakers}
-            />
-          )} />
+          { this.state.sneakers &&
+            <Route path={'/sneakers'} render={(props) => (
+              <Sneakers
+                sneakers={this.state.sneakers}
+              />
+            )} />
+          }
+
 
           <Route path={'/login'} component={Auth} />
           <Route path={'/register'} component={Auth} />
