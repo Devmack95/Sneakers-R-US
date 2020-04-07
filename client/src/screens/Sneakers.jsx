@@ -1,9 +1,8 @@
 import React from 'react'
 
-export default function Sneakers(props){
+const Sneakers = (props) => {
 
   const { sneakers } = props
-  console.log(sneakers)
 
   const show = () => {
     return sneakers.map((sneaker) => {
@@ -13,7 +12,7 @@ export default function Sneakers(props){
           <p>{sneaker.name}</p>
           <p>{sneaker.description}</p>
           <p>${sneaker.price}</p>
-          <img src={sneaker.image} />
+          <img src={sneaker.image} alt={sneaker.name}/>
         </div>
       )
     })
@@ -26,3 +25,5 @@ export default function Sneakers(props){
     </>
   )
 }
+
+export default Sneakers

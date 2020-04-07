@@ -5,23 +5,30 @@ import Sneakers from '../screens/Sneakers'
 import Accessories from '../screens/Accessories'
 import Auth from './Auth'
 
-import { getAllSneakers } from '../services/api-helper'
+import { getAllSneakers, getAllAccessories } from '../services/api-helper'
 
 class Cointainer extends Component {
   constructor() {
     super();
     this.state = {
-      sneakers: ''
+      sneakers: '',
+      accessories: ''
     }
   }
 
   componentDidMount() {
     this.getSneakers()
+    this.getAccessories()
   }
 
   getSneakers = async () => {
     const sneakers = await getAllSneakers()
     this.setState({ sneakers })
+  }
+
+  getAccessories = async () => {
+    const accessories = await getAllAccessories()
+    this.setState({ accessories })
   }
 
   render() {
@@ -31,7 +38,7 @@ class Cointainer extends Component {
 
           <Route exact path={'/'} component={Home} />
 
-          { this.state.sneakers &&
+          {this.state.sneakers &&
             <Route path={'/sneakers'} render={(props) => (
               <Sneakers
                 sneakers={this.state.sneakers}
@@ -39,11 +46,17 @@ class Cointainer extends Component {
             )} />
           }
 
+          {this.state.accessories &&
+            <Route path={'/accessories'} render={(props) => (
+            <Accessories
+              accessories={this.state.accessories} />
+            )} />
+
+          }
 
           <Route path={'/login'} component={Auth} />
           <Route path={'/register'} component={Auth} />
 
-          <Route path={'/accessories'} component={Accessories} />
 
         </Switch>
       </main>

@@ -11,6 +11,10 @@ export const getAllSneakers = async () => {
   return resp.data
 }
 
+export const getAllAccessories = async () => {
+  const resp = await api.get('/accessories')
+  return resp.data
+}
 // ====================================
 // ============= Auth =================
 // ====================================
