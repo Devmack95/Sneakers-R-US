@@ -6,13 +6,13 @@ const Accessories = (props) => {
   console.log(accessories)
 
   const show = () => {
-    return accessories.map((accessories) => {
+    return accessories.map((accessory) => {
       return (
-        <div className='accessories_box' key={accessories.id}>
-          <img src={accessories.image} alt={accessories.name}/>
-          <p>{accessories.name}</p>
-          <p>{accessories.description}</p>
-          <p>${accessories.price}</p>
+        <div className='accessory_box' key={accessory.id}>
+          <img src={accessory.image} alt={accessory.name}/>
+          <p>{accessory.name}</p>
+          <p>{accessory.description}</p>
+          <p>${accessory.price}</p>
         </div>
       )
     })

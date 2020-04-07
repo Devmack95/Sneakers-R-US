@@ -36,20 +36,25 @@ class Cointainer extends Component {
       <main>
         <Switch>
 
-          <Route exact path={'/'} component={Home} />
+          {this.state.sneakers && this.state.accessories &&
+            <Route exact path={'/'} render={(props) => (
+              <Home
+                accessories={this.state.accessories}
+                sneakers={this.state.sneakers} />
+            )} />
+          }
 
           {this.state.sneakers &&
             <Route path={'/sneakers'} render={(props) => (
               <Sneakers
-                sneakers={this.state.sneakers}
-              />
+                sneakers={this.state.sneakers} />
             )} />
           }
 
           {this.state.accessories &&
             <Route path={'/accessories'} render={(props) => (
-            <Accessories
-              accessories={this.state.accessories} />
+              <Accessories
+                accessories={this.state.accessories} />
             )} />
 
           }
