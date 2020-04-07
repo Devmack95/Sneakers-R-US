@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import Login from '../screens/Login'
 import Register from '../screens/Register'
+import {Route} from 'react-router-dom'
 
 import {
   loginUser,
   registerUser,
   verifyUser,
   removeToken
-} from './services/api-helper';
+} from '../services/api-helper';
 
 class Landing extends Component {
   constructor(props) {

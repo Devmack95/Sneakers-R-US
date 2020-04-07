@@ -9,6 +9,7 @@ const Register = (props) => {
       <hr />
       <form onSubmit={props.handleRegister}>
 
+        <h3>Username</h3>
         <input
           name="username"
           type="text"
@@ -16,6 +17,7 @@ const Register = (props) => {
           onChange={props.handleChange}
         />
 
+        <h3>Email</h3>
         <input
           name="email"
           type="text"
@@ -23,6 +25,7 @@ const Register = (props) => {
           onChange={props.handleChange}
         />
 
+        <h3>Password</h3>
         <input
           name="password"
           type="password"

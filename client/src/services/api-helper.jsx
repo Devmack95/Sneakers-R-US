@@ -7,7 +7,7 @@ const api = axios.create({
 });
 
 export const getAllSneakers = async () => {
-  const resp = await api.get('/accessories')
+  const resp = await api.get('/sneakers')
   return resp.data
 }
 
