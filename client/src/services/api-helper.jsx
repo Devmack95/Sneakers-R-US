@@ -6,6 +6,11 @@ const api = axios.create({
   baseURL: baseUrl
 });
 
+export const getAllSneakers = async () => {
+  const resp = await api.get('/accessories')
+  return resp.data
+}
+
 // ====================================
 // ============= Auth =================
 // ====================================
