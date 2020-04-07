@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.css';
+import Cointainer from './components/Cointainer';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Sneakers R' Us</h1>
-    </div>
+    <>
+      <Cointainer />
+    </>
   );
 }
 
