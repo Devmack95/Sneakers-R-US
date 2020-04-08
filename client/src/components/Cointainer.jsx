@@ -4,6 +4,8 @@ import Home from '../screens/Home'
 import Sneakers from '../screens/Sneakers'
 import Accessories from '../screens/Accessories'
 import Auth from './Auth'
+import Create_post from '../screens/Create_post'
+import Edit_post from '../screens/Edit_post'
 
 import { getAllSneakers, getAllAccessories } from '../services/api-helper'
 
@@ -61,7 +63,8 @@ class Cointainer extends Component {
 
           <Route path={'/login'} component={Auth} />
           <Route path={'/register'} component={Auth} />
-
+          <Route path={'/create-post'} component={Create_post} />
+          <Route path={'/edit-post'} component={Edit_post} />
 
         </Switch>
       </main>
