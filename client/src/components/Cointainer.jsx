@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
 import Home from '../screens/Home'
+import Auth from './Auth'
 import Sneakers from '../screens/Sneakers'
 import Accessories from '../screens/Accessories'
-import Auth from './Auth'
-import Create_post from '../screens/Create_post'
-import Edit_post from '../screens/Edit_post'
+import CreatePost from '../screens/CreatePost'
+import EditPost from '../screens/EditPost'
+import UserPage from '../screens/UserPage'
 
 import { getAllSneakers, getAllAccessories } from '../services/api-helper'
 
@@ -46,6 +47,14 @@ class Cointainer extends Component {
             )} />
           }
 
+          {this.state.sneakers && this.state.accessories &&
+            <Route exact path={'/user-page'} render={(props) => (
+              <UserPage
+                accessories={this.state.accessories}
+                sneakers={this.state.sneakers} />
+            )} />
+          }
+
           {this.state.sneakers &&
             <Route path={'/sneakers'} render={(props) => (
               <Sneakers
@@ -63,8 +72,8 @@ class Cointainer extends Component {
 
           <Route path={'/login'} component={Auth} />
           <Route path={'/register'} component={Auth} />
-          <Route path={'/create-post'} component={Create_post} />
-          <Route path={'/edit-post'} component={Edit_post} />
+          <Route path={'/create-post'} component={CreatePost} />
+          <Route path={'/edit-post'} component={EditPost} />
 
         </Switch>
       </main>

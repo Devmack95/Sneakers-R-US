@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class Edit_post extends Component {
+class CreatePost extends Component {
   constructor() {
     super();
     this.state = {
@@ -14,8 +14,8 @@ class Edit_post extends Component {
 
   render() {
     return (
-      <div className='edit_post'>
-        <h1>Did Something Change?</h1>
+      <div className='createPost'>
+        <h1>Selling An Item?</h1>
 
         <form>
           <h3>Brand</h3>
@@ -58,4 +58,4 @@ class Edit_post extends Component {
   }
 }
 
-export default Edit_post
+export default CreatePost
