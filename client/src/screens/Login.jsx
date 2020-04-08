@@ -7,8 +7,6 @@ const Login = (props) => {
     <div className='login_page'>
       <h2>Welcome Back!</h2>
 
-      <hr />
-
       <form onSubmit={(e) => {
         e.preventDefault();
         props.handleLogin();

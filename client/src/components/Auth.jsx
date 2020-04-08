@@ -16,7 +16,6 @@ class Landing extends Component {
     this.state = {
       currentUser: null,
       authFormData: {
-        email: "",
         username: "",
         password: ""
       }

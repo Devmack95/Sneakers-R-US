@@ -6,7 +6,7 @@ const Register = (props) => {
   return (
     <div className='register_page'>
       <h2>Join The Team!</h2>
-      <hr />
+      
       <form onSubmit={props.handleRegister}>
 
         <h3>Username</h3>
