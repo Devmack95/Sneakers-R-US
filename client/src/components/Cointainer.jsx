@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
-import Home from '../screens/Home'
 import Auth from './Auth'
+import Login from '../screens/Login'
+import Register from '../screens/Register'
+import Home from '../screens/Home'
 import Sneakers from '../screens/Sneakers'
 import Accessories from '../screens/Accessories'
 import CreatePost from '../screens/CreatePost'
@@ -13,17 +15,25 @@ import {
   getAllSneakers,
   getAllAccessories,
   verifyUser,
-  getUserById
+  getUserById,
+  loginUser,
+  registerUser,
+  removeToken
 }
   from '../services/api-helper'
 
 class Cointainer extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       sneakers: '',
       accessories: '',
-      user_data: ''
+      user_data: '',
+      currentUser: null,
+      authFormData: {
+        username: "",
+        password: ""
+      }
     }
   }
 
@@ -31,6 +41,46 @@ class Cointainer extends Component {
     this.getSneakers()
     this.getAccessories()
     this.user()
+    this.handleVerify();
+  }
+  handleLoginButton = () => {
+    this.props.history.push("/login")
+  }
+
+  handleLogin = async () => {
+    const currentUser = await loginUser(this.state.authFormData);
+    this.setState({ currentUser })
+  }
+
+  handleRegister = async (e) => {
+    e.preventDefault();
+    const currentUser = await registerUser(this.state.authFormData);
+    this.setState({ currentUser })
+  }
+
+  handleVerify = async () => {
+    const currentUser = await verifyUser();
+    if (currentUser) {
+      this.setState({ currentUser })
+    }
+  }
+
+  handleLogout = () => {
+    localStorage.removeItem("jwt");
+    this.setState({
+      currentUser: null
+    })
+    removeToken();
+  }
+
+  authHandleChange = (e) => {
+    const { name, value } = e.target;
+    this.setState(prevState => ({
+      authFormData: {
+        ...prevState.authFormData,
+        [name]: value
+      }
+    }));
   }
 
   getSneakers = async () => {
@@ -53,6 +103,18 @@ class Cointainer extends Component {
       <main>
         <Switch>
 
+          <Route exact path="/login" render={(props) => (
+            <Login
+              handleLogin={this.handleLogin}
+              handleChange={this.authHandleChange}
+              formData={this.state.authFormData} />)} />
+
+          <Route exact path="/register" render={(props) => (
+            <Register
+              handleRegister={this.handleRegister}
+              handleChange={this.authHandleChange}
+              formData={this.state.authFormData} />)} />
+          
           {this.state.sneakers && this.state.accessories &&
             <Route exact path={'/'} render={(props) => (
               <Home
