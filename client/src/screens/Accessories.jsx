@@ -8,8 +8,8 @@ const Accessories = (props) => {
   const show = () => {
     return accessories.map((accessory) => {
       return (
-        <div className='accessory_box' key={accessory.id}>
-          <img src={accessory.image} alt={accessory.name}/>
+        <div className='items-box' key={accessory.id}>
+          <img src={accessory.image} alt={accessory.name} />
           <p>{accessory.name}</p>
           <p>{accessory.description}</p>
           <p>${accessory.price}</p>
@@ -21,7 +21,10 @@ const Accessories = (props) => {
   return (
     <>
       <h1>Accessories Page</h1>
-      {show()}
+
+      <div className='items-container'>
+        {show()}
+      </div>
     </>
   )
 }

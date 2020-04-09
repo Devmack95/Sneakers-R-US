@@ -7,12 +7,12 @@ const Sneakers = (props) => {
   const show = () => {
     return sneakers.map((sneaker) => {
       return (
-        <div className='sneakers_box' key={sneaker.id}>
+        <div className='items-box' key={sneaker.id}>
           <p>{sneaker.brand}</p>
           <p>{sneaker.name}</p>
           <p>{sneaker.description}</p>
           <p>${sneaker.price}</p>
-          <img src={sneaker.image} alt={sneaker.name}/>
+          <img src={sneaker.image} alt={sneaker.name} />
         </div>
       )
     })
@@ -21,7 +21,10 @@ const Sneakers = (props) => {
   return (
     <>
       <h1>Sneakers Page</h1>
-      {show()}
+
+      <div className='items-container'>
+        {show()}
+      </div>
     </>
   )
 }

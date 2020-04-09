@@ -48,6 +48,20 @@ html, body {
   width: 50%;
 }
 
+.items-container {
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
+}
+.items-box {
+  border: 2px solid black;
+  width: 90%;
+  margin: 10px;
+}
+
+.items-box img {
+  width: 50%;
+}
+
 .footer {
   text-align: center;
   height: 50px;
