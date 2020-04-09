@@ -1,10 +1,29 @@
-.home_preview img {
-  width: 200px;
-}
-.sneakers_box img {
-  width: 200px;
+.home {
+  min-width: 100%;
+  min-height: 100%;
 }
 
-.accessory_box img {
-  width: 200px;
+.preview {
+  display: flex;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+.preview img {
+  height: 50%;
+  width: 50%;
+}
+
+.img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-preview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 2px solid black;
+  column-gap: 10px;
+  row-gap: 15px;
+  width: 50%;
 }

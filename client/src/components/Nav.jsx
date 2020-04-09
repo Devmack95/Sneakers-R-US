@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Nav = (props) => {
-  console.log(props.User)
+  console.log(props)
   return (
     <div className='nav'>
       <Link to='/'> <h1>Sneakers R' Us</h1> </Link>

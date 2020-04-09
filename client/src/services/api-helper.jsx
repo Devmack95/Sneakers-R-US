@@ -15,6 +15,16 @@ export const getAllAccessories = async () => {
   const resp = await api.get('/accessories')
   return resp.data
 }
+
+export const getUserById = async (id) => {
+  try {
+    const resp = await api.get(`/users/${id}`)
+    //console.log('Data:', resp.data)
+    return await resp.data.user
+  } catch (error) {
+    throw error
+  }
+}
 // ====================================
 // ============= Auth =================
 // ====================================

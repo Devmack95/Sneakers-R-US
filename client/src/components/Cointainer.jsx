@@ -12,7 +12,8 @@ import Nav from './Nav'
 import {
   getAllSneakers,
   getAllAccessories,
-  verifyUser
+  verifyUser,
+  getUserById
 }
   from '../services/api-helper'
 
@@ -43,7 +44,7 @@ class Cointainer extends Component {
   }
 
   user = async () => {
-    const user_data = await verifyUser()
+    const user_data = await getUserById()
     this.setState({ user_data })
   }
 

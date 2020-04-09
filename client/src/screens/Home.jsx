@@ -7,7 +7,7 @@ const Home = (props) => {
   const showSneakers = () => {
     return sneakers.slice(0, 6).map((sneaker) => {
       return (
-        <div className='home_preview' key={sneaker.id}>
+        <div className ='img' key={sneaker.id}>
           <img src={sneaker.image} alt={sneaker.name} />
         </div>
       )
@@ -17,26 +17,25 @@ const Home = (props) => {
   const showAccessories = () => {
     return accessories.slice(0, 6).map((accessory) => {
       return (
-        <div className='home_preview' key={accessory.id}>
+        <div className ='img' key={accessory.id}>
           <img src={accessory.image} alt={accessory.name} />
         </div>
       )
     })
   }
+
   return (
     <>
-      <div className='home_sneaker'>
-        <img src='https://odyssey.antiochsb.edu/wp-content/uploads/2016/01/sneaker-collage.png'/>
+      <div>
+        <img className='home' src='https://odyssey.antiochsb.edu/wp-content/uploads/2016/01/sneaker-collage.png'/>
       </div>
 
       <div className='preview'>
-        <div className='sneaker-preview'>
-          sneakers
+        <div className='item-preview'>
           {showSneakers()}
         </div>
 
-        <div className='accessories-preview'>
-          accessories
+        <div className='item-preview'>
           {showAccessories()}
         </div>
       </div>
