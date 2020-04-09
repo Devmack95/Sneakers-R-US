@@ -4,35 +4,42 @@ import { Link } from 'react-router-dom';
 const Login = (props) => {
 
   return (
-    <div className='login_page'>
-      <h2>Welcome Back!</h2>
+    <div className='login-auth'>
 
-      <form onSubmit={(e) => {
-        e.preventDefault();
-        props.handleLogin();
-      }} >
+      <div className='auth-forms'>
 
-        <h3>Username</h3>
-        <input
-          name="username"
-          type="text"
-          value={props.formData.username}
-          onChange={props.handleChange}
-        />
-        <h3>Password</h3>
-        <input
-          name="password"
-          type="password"
-          value={props.formData.password}
-          onChange={props.handleChange}
-        />
+        <h2>Welcome Back!</h2>
 
-        <button>Login</button>
+        <form onSubmit={(e) => {
+          e.preventDefault();
+          props.handleLogin();
+        }} >
 
-        <p>Not a user sign up here</p>
-        <Link to="/register">Register</Link>
+          <h3>Username</h3>
+          <input
+            name="username"
+            type="text"
+            value={props.formData.username}
+            onChange={props.handleChange}
+          />
+          <h3>Password</h3>
+          <input
+            name="password"
+            type="password"
+            value={props.formData.password}
+            onChange={props.handleChange}
+          />
 
-      </form>
+          <br />
+          <button>Login</button>
+
+          <p>Not a user sign up here!</p>
+          <Link to="/register">Register</Link>
+
+        </form>
+
+      </div>
+
     </div>
   );
 }

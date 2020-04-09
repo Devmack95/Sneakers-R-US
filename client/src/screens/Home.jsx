@@ -26,8 +26,8 @@ const Home = (props) => {
 
   return (
     <>
-      <div>
-        <img className='home' src='https://odyssey.antiochsb.edu/wp-content/uploads/2016/01/sneaker-collage.png'/>
+      <div className='home'>
+        <p>hello</p>{/* <img className='home' src='https://odyssey.antiochsb.edu/wp-content/uploads/2016/01/sneaker-collage.png'/> */}
       </div>
 
       <div className='preview'>
