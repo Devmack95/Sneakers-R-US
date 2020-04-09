@@ -5,14 +5,17 @@ const Nav = (props) => {
   console.log(props)
   return (
     <div className='nav'>
-      <Link to='/'> <h1>Sneakers R' Us</h1> </Link>
-      <Link to='/sneakers'>Sneakers</Link>
-      <Link to='/accessories'>Accessories</Link>
-      {
-      
-      }
-      <Link to='/login'>Login</Link>
-      <hr />
+
+      <div className='logo'>
+        <Link to='/'> <h1>Sneakers R' Us</h1> </Link>
+      </div>
+
+      <div className='links'>
+        <Link to='/sneakers'>Sneakers</Link>
+        <Link to='/accessories'>Accessories</Link>
+        <Link to='/login'>Login</Link>
+      </div>
+
     </div>
   )
 }
