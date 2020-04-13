@@ -6,6 +6,7 @@ const api = axios.create({
   baseURL: baseUrl
 });
 
+//==================================== Sneakers =====================================
 export const getAllSneakers = async () => {
   const resp = await api.get('/sneakers')
   return resp.data
@@ -26,8 +27,24 @@ export const updateSneaker = async (item, id) => {
   return resp.data
 }
 
+//================================== Accessories =====================================
 export const getAllAccessories = async () => {
   const resp = await api.get('/accessories')
+  return resp.data
+}
+
+export const postAccessory = async (user_id, postData) => {
+  const resp = await api.post(`/users/${user_id}/accessories`, postData)
+  return resp.data
+}
+
+export const destroyAccessory = async (id) => {
+  const resp = await api.delete(`/accessories/${id}`)
+  return resp.data
+}
+
+export const updateAccessory = async (item, id) => {
+  const resp = await api.put(`accessories/${id}`, { accessories: item })
   return resp.data
 }
 

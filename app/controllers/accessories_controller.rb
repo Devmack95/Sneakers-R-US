@@ -25,6 +25,17 @@ class AccessoriesController < ApplicationController
     end
   end
 
+  # Create by /users/:user_id/sneakers
+  def create_accessory_by_user
+    user = User.find(params[:user_id])
+    accessory = user.accessories.new(accessory_params)
+    if accessory.save
+      render json: accessory, include: :user, status: :created
+    else
+      render json: accessory.errors, status: :unprocessable_entity
+    end
+  end
+
   # PATCH/PUT /accessories/1
   def update
     if @accessory.update(accessory_params)

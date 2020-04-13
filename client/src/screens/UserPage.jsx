@@ -33,7 +33,8 @@ const UserPage = (props) => {
     <>
       <div className='users_nav'>
         <h1>User Page</h1>
-        <Link to={'/create-post'}><button>Create Post</button></Link>
+        <Link to={'/create-sneaker'}><button>New Sneaker</button></Link>
+        <Link to={'/create-accessory'}><button>New Accessory</button></Link>
       </div>
 
       <div className='items-container'>

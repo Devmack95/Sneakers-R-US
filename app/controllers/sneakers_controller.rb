@@ -25,7 +25,7 @@ class SneakersController < ApplicationController
   end
 
   # Create by /users/:user_id/sneakers
-  def create_by_user
+  def create_sneaker_by_user
     user = User.find(params[:user_id])
     sneaker = user.sneakers.new(sneaker_params)
     if sneaker.save

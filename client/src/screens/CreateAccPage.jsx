@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 
-export default class CreatePost extends Component {
+class createAccessory extends Component {
   constructor(props) {
     super(props)
     this.state = {
       postData: {
-        brand: '',
         name: '',
         description: '',
         image: '',
@@ -30,26 +29,12 @@ export default class CreatePost extends Component {
 
         <div className='postForm'>
 
-          <h1>Selling An Item?</h1>
+          <h1>Selling An Accessory?</h1>
 
           <form onSubmit={event => {
             event.preventDefault()
             this.props.handleSubmit(this.props.id, this.state.postData)
           }}>
-
-            <h3>What Are You Selling</h3>
-            {/* <select>
-            <option value='Sneaker'>Sneaker</option>
-            <option value='Accessory'>Accessory</option>
-          </select> */}
-
-            <h3>Brand</h3>
-            <input
-              name='brand'
-              type='text'
-              value={this.state.postData.brand}
-              onChange={this.handleChange}
-            />
 
             <h3>Name</h3>
             <input
@@ -91,3 +76,5 @@ export default class CreatePost extends Component {
     )
   }
 }
+
+export default createAccessory

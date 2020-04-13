@@ -6,7 +6,8 @@ import Register from '../screens/Register'
 import Home from '../screens/Home'
 import Sneakers from '../screens/Sneakers'
 import Accessories from '../screens/Accessories'
-import CreatePost from '../screens/CreatePost'
+import CreateSneaker from '../screens/CreateSneaPage'
+import CreateAccessory from '../screens/CreateAccPage'
 import EditPost from '../screens/EditPost'
 import UserPage from '../screens/UserPage'
 import Nav from './Nav'
@@ -21,7 +22,10 @@ import {
   removeToken,
   postSneaker,
   destroySneaker,
-  updateSneaker
+  updateSneaker,
+  postAccessory,
+  destroyAccessory,
+  updateAccessory
 }
   from '../services/api-helper'
 
@@ -86,19 +90,38 @@ class Cointainer extends Component {
     }));
   }
 
-  getSneakers = async () => {
-    const sneakers = await getAllSneakers()
-    this.setState({ sneakers })
+  user = async () => {
+    const user_data = await getUserById()
+    this.setState({ user_data })
   }
+
+  //================================== Accessories =====================================
 
   getAccessories = async () => {
     const accessories = await getAllAccessories()
     this.setState({ accessories })
   }
 
-  user = async () => {
-    const user_data = await getUserById()
-    this.setState({ user_data })
+  createAccessory = async (id, accessoryData) => {
+    const newAccessory = await postAccessory(id, accessoryData)
+    this.setState(prevState => ({
+      accessories: [newAccessory, ...prevState.accessories]
+    }))
+    this.props.history.push('/accessories')
+  }
+
+  deleteAccessory = async (accessories) => {
+    await destroySneaker(accessories.id)
+    this.setState(prevState => ({
+      accessories: prevState.accessories.filter(singleAccessory => singleAccessory.id !== accessories.id)
+    }))
+  }
+
+  //==================================== Sneakers =====================================
+
+  getSneakers = async () => {
+    const sneakers = await getAllSneakers()
+    this.setState({ sneakers })
   }
 
   createSneaker = async (id, sneakerData) => {
@@ -145,7 +168,7 @@ class Cointainer extends Component {
               handleRegister={this.handleRegister}
               handleChange={this.authHandleChange}
               formData={this.state.authFormData} />)} />
-          
+
           {this.state.sneakers && this.state.accessories &&
             <Route exact path={'/'} render={(props) => (
               <Home
@@ -157,9 +180,9 @@ class Cointainer extends Component {
           {this.state.sneakers && this.state.accessories &&
             <Route exact path={'/user-page'} render={(props) => (
               <UserPage
-              accessories={this.state.accessories}
-              sneakers={this.state.sneakers}
-              deleteSneaker={this.deleteSneaker}/>
+                accessories={this.state.accessories}
+                sneakers={this.state.sneakers}
+                deleteSneaker={this.deleteSneaker} />
             )} />
           }
 
@@ -180,22 +203,28 @@ class Cointainer extends Component {
           <Route path={'/login'} component={Auth} />
           <Route path={'/register'} component={Auth} />
 
-          <Route path={'/create-post'} render={(props) => (
-            <CreatePost
+          <Route path={'/create-sneaker'} render={(props) => (
+            <CreateSneaker
               id={this.state.currentUser.id}
               handleSubmit={this.createSneaker} />
           )} />
 
+          <Route path={'/create-accessory'} render={(props) => (
+            <CreateAccessory
+              id={this.state.currentUser.id}
+              handleSubmit={this.createAccessory} />
+          )} />
+
           <Route path={'/edit-post'} render={(props) => (
             <EditPost
-            postData={this.state.postData}
-            handleChange={this.postChange} />
+              postData={this.state.postData}
+              handleChange={this.postChange} />
           )} />
 
           {this.state.currentUser &&
             <Nav
-            User={this.state.currentUser}
-            signOut={this.handleLogout}
+              User={this.state.currentUser}
+              signOut={this.handleLogout}
             />
           }
 
