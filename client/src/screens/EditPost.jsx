@@ -4,7 +4,7 @@ const EditPost = (props) => {
 
   return (
     <div className='editPost'>
-      <div className='forms'>
+      <div className='postForm'>
         <h1>Did Something Change?</h1>
 
         <form>
@@ -47,6 +47,9 @@ const EditPost = (props) => {
             value={props.postData.image}
             onChange={props.handleChange}
           />
+
+          <br />
+          <button>Submit</button>
         </form>
       </div>
     </div>

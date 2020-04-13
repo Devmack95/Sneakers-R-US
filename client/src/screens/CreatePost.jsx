@@ -4,7 +4,9 @@ const CreatePost = (props) => {
 
   return (
     <div className='createPost'>
-      <div className='forms'>
+
+      <div className='postForm'>
+
         <h1>Selling An Item?</h1>
 
         <form>
@@ -54,6 +56,9 @@ const CreatePost = (props) => {
             value={props.postData.image}
             onChange={props.handleChange}
           />
+
+          <br />
+          <button>Create</button>
         </form>
       </div>
     </div>

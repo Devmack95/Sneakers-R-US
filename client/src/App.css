@@ -105,6 +105,38 @@ html, body {
   width: 50%;
 }
 
+.postForm {
+  border: 2px solid black;
+  width: 30%;
+  text-align: center;
+  background-color: white;
+}
+
+.postForm button {
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.createPost {
+  background-image: url(https://i.pinimg.com/originals/62/e1/b0/62e1b0b90fba0a250b9b828c365149b9.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 800px;
+}
+
+.editPost {
+  background-image: url(https://www.ecopetit.cat/wpic/mpic/17-178818_sneaker-backgrounds.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 800px;
+}
+
 .footer {
   text-align: center;
   height: 50px;
