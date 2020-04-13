@@ -3,7 +3,6 @@ import React from 'react'
 const Accessories = (props) => {
 
   const { accessories } = props
-  console.log(accessories)
 
   const show = () => {
     return accessories.map((accessory) => {
