@@ -215,11 +215,14 @@ class Cointainer extends Component {
               handleSubmit={this.createAccessory} />
           )} />
 
-          <Route path={'/edit-post'} render={(props) => (
-            <EditPost
-              postData={this.state.postData}
-              handleChange={this.postChange} />
-          )} />
+          {this.state.sneakers &&
+            <Route path={'/edit-post'} render={(props) => (
+              <EditPost
+                sneakers={this.state.sneakers}
+                postData={this.state.postData}
+                handleChange={this.postChange} />
+            )} />
+          }
 
           {this.state.currentUser &&
             <Nav

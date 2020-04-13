@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import {updateSneaker} from '../services/api-helper'
+import { updateSneaker } from '../services/api-helper'
 
-export default class EditPost extends Component {
+class EditPost extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -35,19 +35,30 @@ export default class EditPost extends Component {
     this.props.history.push('/user-page')
   }
 
+  show = () => {
+    return this.props.sneakers.map((sneaker) => {
+      return (
+          <option value={sneaker.name}>{sneaker.name}</option>
+      )
+    })
+  }
+
   render() {
+
     return (
       <div className='editPost'>
         <div className='postForm'>
           <h1>Did Something Change?</h1>
-
+          <select>
+            {this.show()}
+          </select>
           <form>
             <h3>Brand</h3>
             <input
               name='brand'
               type='text'
               value={this.state.postData.brand}
-              onChange={this.props.handleChange}
+              onChange={this.handleChange}
             />
 
             <h3>Name</h3>
@@ -55,7 +66,7 @@ export default class EditPost extends Component {
               name='name'
               type='text'
               value={this.state.postData.name}
-              onChange={this.props.handleChange}
+              onChange={this.handleChange}
             />
 
             <h3>Description</h3>
@@ -63,7 +74,7 @@ export default class EditPost extends Component {
               name='description'
               type='text'
               value={this.state.postData.description}
-              onChange={this.props.handleChange}
+              onChange={this.handleChange}
             />
 
             <h3>Price</h3>
@@ -71,7 +82,7 @@ export default class EditPost extends Component {
               name='price'
               type='number'
               value={this.state.postData.price}
-              onChange={this.props.handleChange}
+              onChange={this.handleChange}
             />
 
             <h3>Image</h3>
@@ -79,7 +90,7 @@ export default class EditPost extends Component {
               name='image'
               type='text'
               value={this.state.postData.image}
-              onChange={this.props.handleChange}
+              onChange={this.handleChange}
             />
 
             <br />
@@ -90,3 +101,5 @@ export default class EditPost extends Component {
     )
   }
 }
+
+export default EditPost
