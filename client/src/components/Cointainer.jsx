@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, withRouter } from 'react-router-dom'
 import Auth from './Auth'
 import Login from '../screens/Login'
 import Register from '../screens/Register'
@@ -18,7 +18,10 @@ import {
   getUserById,
   loginUser,
   registerUser,
-  removeToken
+  removeToken,
+  postSneaker,
+  destroySneaker,
+  updateSneaker
 }
   from '../services/api-helper'
 
@@ -29,14 +32,7 @@ class Cointainer extends Component {
       sneakers: '',
       accessories: '',
       user_data: '',
-      currentUser: null,
-      postData: {
-        brand: '',
-        name: '',
-        description: '',
-        price: '',
-        image: ''
-      },
+      currentUser: '',
       authFormData: {
         username: "",
         password: ""
@@ -105,12 +101,34 @@ class Cointainer extends Component {
     this.setState({ user_data })
   }
 
-  postChange = (e) => {
-    const { name, value } = e.target
-    this.setState({ postData: { [name]: [value] } })
+  createSneaker = async (id, sneakerData) => {
+    const newSneaker = await postSneaker(id, sneakerData)
+    this.setState(prevState => ({
+      sneakers: [newSneaker, ...prevState.sneakers]
+    }))
+    this.props.history.push('/sneakers')
   }
 
+  deleteSneaker = async (sneakers) => {
+    await destroySneaker(sneakers.id)
+    this.setState(prevState => ({
+      sneakers: prevState.sneakers.filter(singleSneaker => singleSneaker.id !== sneakers.id)
+    }))
+  }
+
+  // updateSneaker = async (sneakerItem) => {
+  //   const updatedSneaker = await updateSneaker(id, sneakers)
+  //   this.setState(prevState => ({
+  //     sneakers: prevState.sneakers.map(sneaker => {
+  //       return sneaker.id === sneakers.id ? updatedSneaker : sneaker
+  //     })
+  //   }))
+  //   this.props.history.push('/user-page')
+  // }
+
   render() {
+
+    // console.log(this.state.currentUser)
 
     return (
       <main>
@@ -139,8 +157,9 @@ class Cointainer extends Component {
           {this.state.sneakers && this.state.accessories &&
             <Route exact path={'/user-page'} render={(props) => (
               <UserPage
-                accessories={this.state.accessories}
-                sneakers={this.state.sneakers} />
+              accessories={this.state.accessories}
+              sneakers={this.state.sneakers}
+              deleteSneaker={this.deleteSneaker}/>
             )} />
           }
 
@@ -163,8 +182,8 @@ class Cointainer extends Component {
 
           <Route path={'/create-post'} render={(props) => (
             <CreatePost
-            postData={this.state.postData}
-            handleChange={this.postChange} />
+              id={this.state.currentUser.id}
+              handleSubmit={this.createSneaker} />
           )} />
 
           <Route path={'/edit-post'} render={(props) => (
@@ -173,9 +192,10 @@ class Cointainer extends Component {
             handleChange={this.postChange} />
           )} />
 
-          {this.state.user_data &&
+          {this.state.currentUser &&
             <Nav
-              User={this.state.currentUser}
+            User={this.state.currentUser}
+            signOut={this.handleLogout}
             />
           }
 
@@ -185,4 +205,4 @@ class Cointainer extends Component {
   }
 }
 
-export default Cointainer
+export default withRouter(Cointainer)

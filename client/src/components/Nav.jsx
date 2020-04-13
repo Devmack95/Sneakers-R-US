@@ -2,18 +2,27 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const Nav = (props) => {
-  console.log(props)
+  console.log(props.User)
+
   return (
     <div className='nav'>
 
       <div className='logo'>
-        <Link to='/'> <h1>Sneakers R' Us</h1> </Link>
+        <Link to='/'><img src='https://i.imgur.com/NTqnblE.png' alt="Sneakers R' Us" /></Link>
       </div>
 
       <div className='links'>
         <Link to='/sneakers'>Sneakers</Link>
         <Link to='/accessories'>Accessories</Link>
-        <Link to='/login'>Login</Link>
+
+        {props.User ?
+          <>
+            <Link to='/user-page'>{props.User.username}</Link>
+            <button onClick={props.signOut}>LogOut</button>
+          </>
+          :
+          <Link to='/login'>Login</Link>
+        }
       </div>
 
     </div>

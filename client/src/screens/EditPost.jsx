@@ -1,59 +1,92 @@
-import React from 'react'
+import React, { Component } from 'react'
+import {updateSneaker} from '../services/api-helper'
 
-const EditPost = (props) => {
+export default class EditPost extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      postData: {
+        brand: '',
+        name: '',
+        description: '',
+        image: '',
+        price: ''
+      }
+    }
+  }
 
-  return (
-    <div className='editPost'>
-      <div className='postForm'>
-        <h1>Did Something Change?</h1>
+  handleChange = (e) => {
+    const { name, value } = e.target
+    this.setState(prevState => ({
+      postData: {
+        ...prevState.postData,
+        [name]: value
+      }
+    }))
+  }
 
-        <form>
-          <h3>Brand</h3>
-          <input
-            name='brand'
-            type='text'
-            value={props.postData.brand}
-            onChange={props.handleChange}
-          />
+  updateSneaker = async (sneakerItem) => {
+    const updatedSneaker = await updateSneaker(this.state.postData, sneakerItem.id)
+    this.setState(prevState => ({
+      sneakers: prevState.sneakers.map(sneaker => {
+        return sneaker.id === sneakerItem.id ? updatedSneaker : sneaker
+      })
+    }))
+    this.props.history.push('/user-page')
+  }
 
-          <h3>Name</h3>
-          <input
-            name='name'
-            type='text'
-            value={props.postData.name}
-            onChange={props.handleChange}
-          />
+  render() {
+    return (
+      <div className='editPost'>
+        <div className='postForm'>
+          <h1>Did Something Change?</h1>
 
-          <h3>Description</h3>
-          <input
-            name='description'
-            type='text'
-            value={props.postData.description}
-            onChange={props.handleChange}
-          />
+          <form>
+            <h3>Brand</h3>
+            <input
+              name='brand'
+              type='text'
+              value={this.state.postData.brand}
+              onChange={this.props.handleChange}
+            />
 
-          <h3>Price</h3>
-          <input
-            name='price'
-            type='number'
-            value={props.postData.price}
-            onChange={props.handleChange}
-          />
+            <h3>Name</h3>
+            <input
+              name='name'
+              type='text'
+              value={this.state.postData.name}
+              onChange={this.props.handleChange}
+            />
 
-          <h3>Image</h3>
-          <input
-            name='image'
-            type='text'
-            value={props.postData.image}
-            onChange={props.handleChange}
-          />
+            <h3>Description</h3>
+            <input
+              name='description'
+              type='text'
+              value={this.state.postData.description}
+              onChange={this.props.handleChange}
+            />
 
-          <br />
-          <button>Submit</button>
-        </form>
+            <h3>Price</h3>
+            <input
+              name='price'
+              type='number'
+              value={this.state.postData.price}
+              onChange={this.props.handleChange}
+            />
+
+            <h3>Image</h3>
+            <input
+              name='image'
+              type='text'
+              value={this.state.postData.image}
+              onChange={this.props.handleChange}
+            />
+
+            <br />
+            <button>Submit</button>
+          </form>
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
-
-export default EditPost

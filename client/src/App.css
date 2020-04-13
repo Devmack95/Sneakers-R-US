@@ -6,8 +6,17 @@ html, body {
 .nav {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   border-bottom: 1px solid black;
+}
+
+.links a{
+  text-decoration: none;
+}
+
+.nav img {
+  width: 20%;
+  height: 20%;
 }
 
 .logo {

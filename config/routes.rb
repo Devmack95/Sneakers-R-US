@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
-  resources :accessories
-  resources :sneakers 
-
   #====================Auth====================
   post '/auth/login', to: 'authentication#login'
   get '/auth/verify', to: 'authentication#verify'
-  resources :users do |t|
-  resources :sneakers
+
+  resources :users 
+
   resources :accessories
-end
+  resources :sneakers 
+
+  post '/users/:user_id/sneakers', to: 'sneakers#create_by_user'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

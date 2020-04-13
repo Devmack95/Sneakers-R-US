@@ -11,7 +11,7 @@ const UserPage = (props) => {
         <div className='items-box' key={sneaker.id}>
           <img src={sneaker.image} alt={sneaker.name} />
           <Link to={'edit-post'}><button>Edit Post</button></Link>
-          <button>Delete</button>
+          <button onClick={() => {props.deleteSneaker(sneaker)}}>Delete</button>
         </div>
       )
     })

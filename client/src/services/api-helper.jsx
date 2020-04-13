@@ -11,6 +11,21 @@ export const getAllSneakers = async () => {
   return resp.data
 }
 
+export const postSneaker = async (user_id, postData) => {
+  const resp = await api.post(`/users/${user_id}/sneakers`, postData)
+  return resp.data
+}
+
+export const destroySneaker = async (id) => {
+  const resp = await api.delete(`/sneakers/${id}`)
+  return resp.data
+}
+
+export const updateSneaker = async (item, id) => {
+  const resp = await api.put(`sneakers/${id}`, { sneakers: item })
+  return resp.data
+}
+
 export const getAllAccessories = async () => {
   const resp = await api.get('/accessories')
   return resp.data

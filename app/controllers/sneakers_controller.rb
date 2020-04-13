@@ -24,6 +24,17 @@ class SneakersController < ApplicationController
     end
   end
 
+  # Create by /users/:user_id/sneakers
+  def create_by_user
+    user = User.find(params[:user_id])
+    sneaker = user.sneakers.new(sneaker_params)
+    if sneaker.save
+      render json: sneaker, include: :user, status: :created
+    else
+      render json: sneaker.errors, status: :unprocessable_entity
+    end
+  end
+
   # PATCH/PUT /sneakers/1
   def update
     if @sneaker.update(sneaker_params)
