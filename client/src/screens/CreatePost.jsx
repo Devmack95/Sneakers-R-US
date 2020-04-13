@@ -1,61 +1,63 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class CreatePost extends Component {
-  constructor() {
-    super();
-    this.state = {
-      brand: '',
-      name: '',
-      description: '',
-      price: '',
-      image: ''
-    }
-  }
+const CreatePost = (props) => {
 
-  render() {
-    return (
-      <div className='createPost'>
+  return (
+    <div className='createPost'>
+      <div className='forms'>
         <h1>Selling An Item?</h1>
 
         <form>
+
+          <h3>What Are You Selling</h3>
+          <select>
+            <option value='Sneaker'>Sneaker</option>
+            <option value='Accessory'>Accessory</option>
+          </select>
+
           <h3>Brand</h3>
           <input
             name='brand'
             type='text'
-            value='brand'
+            value={props.postData.brand}
+            onChange={props.handleChange}
           />
 
           <h3>Name</h3>
           <input
             name='name'
             type='text'
-            value='name'
+            value={props.postData.name}
+            onChange={props.handleChange}
           />
 
           <h3>Description</h3>
           <input
             name='description'
             type='text'
-            value='description'
+            value={props.postData.description}
+            onChange={props.handleChange}
           />
 
           <h3>Price</h3>
           <input
             name='price'
             type='number'
-            value='price'
+            value={props.postData.price}
+            onChange={props.handleChange}
           />
 
           <h3>Image</h3>
           <input
             name='image'
             type='text'
-            value='image'
+            value={props.postData.image}
+            onChange={props.handleChange}
           />
         </form>
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default CreatePost

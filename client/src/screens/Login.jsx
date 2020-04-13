@@ -6,7 +6,7 @@ const Login = (props) => {
   return (
     <div className='login-auth'>
 
-      <div className='auth-forms'>
+      <div className='forms'>
 
         <h2>Welcome Back!</h2>
 

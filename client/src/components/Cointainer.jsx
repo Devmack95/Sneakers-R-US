@@ -30,6 +30,13 @@ class Cointainer extends Component {
       accessories: '',
       user_data: '',
       currentUser: null,
+      postData: {
+        brand: '',
+        name: '',
+        description: '',
+        price: '',
+        image: ''
+      },
       authFormData: {
         username: "",
         password: ""
@@ -98,7 +105,13 @@ class Cointainer extends Component {
     this.setState({ user_data })
   }
 
+  postChange = (e) => {
+    const { name, value } = e.target
+    this.setState({ postData: { [name]: [value] } })
+  }
+
   render() {
+
     return (
       <main>
         <Switch>
@@ -143,20 +156,28 @@ class Cointainer extends Component {
               <Accessories
                 accessories={this.state.accessories} />
             )} />
-
           }
 
           <Route path={'/login'} component={Auth} />
           <Route path={'/register'} component={Auth} />
-          <Route path={'/create-post'} component={CreatePost} />
-          <Route path={'/edit-post'} component={EditPost} />
+
+          <Route path={'/create-post'} render={(props) => (
+            <CreatePost
+            postData={this.state.postData}
+            handleChange={this.postChange} />
+          )} />
+
+          <Route path={'/edit-post'} render={(props) => (
+            <EditPost
+            postData={this.state.postData}
+            handleChange={this.postChange} />
+          )} />
 
           {this.state.user_data &&
             <Nav
-              User={this.state.user_data}
+              User={this.state.currentUser}
             />
           }
-
 
         </Switch>
       </main>

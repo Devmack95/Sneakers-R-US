@@ -8,12 +8,10 @@ const UserPage = (props) => {
   const showSneakers = () => {
     return sneakers.map((sneaker) => {
       return (
-        <div className='sneakers_box' key={sneaker.id}>
-          {/* <p>{sneaker.brand}</p>
-          <p>{sneaker.name}</p>
-          <p>{sneaker.description}</p>
-          <p>${sneaker.price}</p> */}
+        <div className='items-box' key={sneaker.id}>
           <img src={sneaker.image} alt={sneaker.name} />
+          <Link to={'edit-post'}><button>Edit Post</button></Link>
+          <button>Delete</button>
         </div>
       )
     })
@@ -22,11 +20,10 @@ const UserPage = (props) => {
   const showAccessories = () => {
     return accessories.map((accessory) => {
       return (
-        <div className='accessory_box' key={accessory.id}>
+        <div className='items-box' key={accessory.id}>
           <img src={accessory.image} alt={accessory.name} />
-          {/* <p>{accessory.name}</p>
-          <p>{accessory.description}</p>
-          <p>${accessory.price}</p> */}
+          <Link to={'edit-post'}><button>Edit Post</button></Link>
+          <button>Delete</button>
         </div>
       )
     })
@@ -35,16 +32,14 @@ const UserPage = (props) => {
   return (
     <>
       <div className='users_nav'>
-        <Link to={'/create-post'}>Create Post</Link>
         <h1>User Page</h1>
-        <p>Click a Item to Edit</p>
+        <Link to={'/create-post'}><button>Create Post</button></Link>
       </div>
 
-      <div className='myitems'>
+      <div className='items-container'>
         {showSneakers()}
         {showAccessories()}
       </div>
-
     </>
   )
 }

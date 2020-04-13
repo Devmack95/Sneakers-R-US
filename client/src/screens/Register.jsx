@@ -6,7 +6,7 @@ const Register = (props) => {
   return (
     <div className='register-auth'>
 
-      <div className='auth-forms'>
+      <div className='forms'>
 
         <h2>Join The Team!</h2>
 
