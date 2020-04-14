@@ -12,8 +12,7 @@ class EditPost extends Component {
         image: '',
         price: ''
       },
-      selectedSneaker: '',
-      selectedAccessory: ''
+      selectedItem: ''
     }
   }
 
@@ -49,11 +48,10 @@ class EditPost extends Component {
 
   onChange = (e) => {
     this.setState({
-      selectedSneaker: e.target.value,
-      selectedAccessory: e.target.value
+      selectedItem: e.target.value
     })
     this.props.sneakers.map((sneaker) => {
-      if (this.state.selectedSneaker === sneaker.name) {
+      if (this.state.selectedItem === sneaker.name) {
         this.setState({
           postData: {
             brand: sneaker.brand,
@@ -66,7 +64,7 @@ class EditPost extends Component {
       }
     })
     this.props.accessories.map((accessory) => {
-      if (this.state.selectedAccessory === accessory.name) {
+      if (this.state.selectedItem === accessory.name) {
         this.setState({
           postData: {
             name: accessory.name,
@@ -102,7 +100,7 @@ class EditPost extends Component {
         <div className='postForm'>
           <h1>Did Something Change?</h1>
 
-          <select value={this.state.selectedSneaker} onChange={this.onChange}>
+          <select value={this.state.selectedItem} onChange={this.onChange}>
             <option>Select an Item</option>
             {this.sneakersOptions()}
             {this.accessoriesOptions()}
