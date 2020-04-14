@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { updateSneaker, updateAccessory } from '../services/api-helper'
+import { updateSneaker } from '../services/api-helper'
 
 class EditPost extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class EditPost extends Component {
         image: '',
         price: ''
       },
-      selectedItem: ''
+      selectedSneaker: ''
     }
   }
 
@@ -36,22 +36,12 @@ class EditPost extends Component {
     this.props.history.push('/user-page')
   }
 
-  updateAccessory = async (accessoryItem) => {
-    const updatedAccessory = await updateAccessory(this.state.postData, accessoryItem.id)
-    this.setState(prevState => ({
-      accessorys: prevState.accessorys.map(accessory => {
-        return accessory.id === accessoryItem.id ? updatedAccessory : accessory
-      })
-    }))
-    this.props.history.push('/user-page')
-  }
-
   onChange = (e) => {
     this.setState({
-      selectedItem: e.target.value
+      selectedSneaker: e.target.value
     })
     this.props.sneakers.map((sneaker) => {
-      if (this.state.selectedItem === sneaker.name) {
+      if (this.state.selectedSneaker === sneaker.name) {
         this.setState({
           postData: {
             brand: sneaker.brand,
@@ -59,18 +49,6 @@ class EditPost extends Component {
             description: sneaker.description,
             image: sneaker.image,
             price: sneaker.price
-          }
-        })
-      }
-    })
-    this.props.accessories.map((accessory) => {
-      if (this.state.selectedItem === accessory.name) {
-        this.setState({
-          postData: {
-            name: accessory.name,
-            description: accessory.description,
-            image: accessory.image,
-            price: accessory.price
           }
         })
       }
@@ -85,14 +63,6 @@ class EditPost extends Component {
     })
   }
 
-  accessoriesOptions = () => {
-    return this.props.accessories.map((accessory) => {
-      return (
-        <option key={accessory.id} value={accessory.name}>{accessory.name}</option>
-      )
-    })
-  }
-
   render() {
 
     return (
@@ -100,13 +70,16 @@ class EditPost extends Component {
         <div className='postForm'>
           <h1>Did Something Change?</h1>
 
-          <select value={this.state.selectedItem} onChange={this.onChange}>
+          <select value={this.state.selectedSneaker} onChange={this.onChange}>
             <option>Select an Item</option>
             {this.sneakersOptions()}
-            {this.accessoriesOptions()}
           </select>
 
-          <form>
+          <form onSubmit={(e) => {
+            e.preventDefault()
+            this.updateSneaker(this.selectedSneaker)
+          }}>
+
             <h3>Brand</h3>
             <input
               name='brand'

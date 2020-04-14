@@ -34,7 +34,8 @@ const UserPage = (props) => {
       <div className='users_nav'>
         <Link to={'/create-sneaker'}><button>New Sneaker</button></Link>
         <Link to={'/create-accessory'}><button>New Accessory</button></Link>
-        <Link to={'edit-post'}><button>Edit Post</button></Link>
+        <Link to={'edit-sneaker'}><button>Edit Sneaker</button></Link>
+        <Link to={'edit-accessory'}><button>Edit Accessory</button></Link>
       </div>
 
       <div className='items-container'>

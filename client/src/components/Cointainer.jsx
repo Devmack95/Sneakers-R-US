@@ -7,7 +7,8 @@ import Sneakers from '../screens/Sneakers'
 import Accessories from '../screens/Accessories'
 import CreateSneaker from '../screens/CreateSneaPage'
 import CreateAccessory from '../screens/CreateAccPage'
-import EditPost from '../screens/EditPost'
+import EditSneaker from '../screens/EditSneaker'
+import EditAccessory from '../screens/EditAccessory'
 import UserPage from '../screens/UserPage'
 import Nav from './Nav'
 
@@ -202,15 +203,24 @@ class Cointainer extends Component {
           )} />
 
           {this.state.sneakers && this.state.accessories &&
-            <Route path={'/edit-post'} render={(props) => (
-              <EditPost
+            <Route path={'/edit-sneaker'} render={(props) => (
+              <EditSneaker
                 sneakers={this.state.sneakers}
                 accessories={this.state.accessories}
                 postData={this.state.postData}
                 handleChange={this.postChange} />
             )} />
           }
-          <Route render={() => <Redirect to={{ pathname: "/" }} />} />
+
+          {this.state.accessories &&
+            <Route path={'/edit-accessory'} render={(props) => (
+              <EditAccessory
+                accessories={this.state.accessories}
+                postData={this.state.postData} />
+            )} />
+          }
+
+          {/* <Route render={() => <Redirect to={{ pathname: "/" }} />} /> */}
           
         </Switch>
       </main>
