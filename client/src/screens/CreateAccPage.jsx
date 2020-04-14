@@ -24,6 +24,7 @@ class createAccessory extends Component {
   }
 
   render() {
+
     return (
       <div className='createPost'>
 

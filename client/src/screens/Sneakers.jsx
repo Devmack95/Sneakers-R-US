@@ -20,11 +20,11 @@ const Sneakers = (props) => {
 
   return (
     <>
-      <h1 className='sneakers'>Sneakers Page</h1>
 
       <div className='items-container'>
         {show()}
       </div>
+      
     </>
   )
 }

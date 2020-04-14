@@ -32,7 +32,6 @@ const UserPage = (props) => {
   return (
     <>
       <div className='users_nav'>
-        <h1>User Page</h1>
         <Link to={'/create-sneaker'}><button>New Sneaker</button></Link>
         <Link to={'/create-accessory'}><button>New Accessory</button></Link>
         <Link to={'edit-post'}><button>Edit Post</button></Link>

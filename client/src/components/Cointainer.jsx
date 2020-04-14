@@ -79,7 +79,9 @@ class Cointainer extends Component {
   }
 
   authHandleChange = (e) => {
+
     const { name, value } = e.target;
+    
     this.setState(prevState => ({
       authFormData: {
         ...prevState.authFormData,
@@ -136,12 +138,13 @@ class Cointainer extends Component {
 
     return (
       <main>
+
         <Nav
           User={this.state.currentUser}
           signOut={this.handleLogout}
         />
-        <Switch>
 
+        <Switch>
 
           <Route exact path="/login" render={(props) => (
             <Login
@@ -211,13 +214,6 @@ class Cointainer extends Component {
                 handleChange={this.postChange} />
             )} />
           }
-
-          {/* {this.state.currentUser &&
-            <Nav
-              User={this.state.currentUser}
-              signOut={this.handleLogout}
-            />
-          } */}
 
         </Switch>
       </main>

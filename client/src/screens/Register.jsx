@@ -1,7 +1,8 @@
 import React from 'react';
 
-// This component handles our register form
 const Register = (props) => {
+
+  const {handleChange, handleRegister, formData} = props
 
   return (
     <div className='register-auth'>
@@ -10,30 +11,30 @@ const Register = (props) => {
 
         <h2>Join The Team!</h2>
 
-        <form onSubmit={props.handleRegister}>
+        <form onSubmit={handleRegister}>
 
           <h3>Username</h3>
           <input
             name="username"
             type="text"
-            value={props.formData.username}
-            onChange={props.handleChange}
+            value={formData.username}
+            onChange={handleChange}
           />
 
           <h3>Email</h3>
           <input
             name="email"
             type="text"
-            value={props.formData.email}
-            onChange={props.handleChange}
+            value={formData.email}
+            onChange={handleChange}
           />
 
           <h3>Password</h3>
           <input
             name="password"
             type="password"
-            value={props.formData.password}
-            onChange={props.handleChange}
+            value={formData.password}
+            onChange={handleChange}
           />
 
           <br />
