@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Switch, Route, withRouter } from 'react-router-dom'
+import { Switch, Route, withRouter, Redirect } from 'react-router-dom'
 import Auth from './Auth'
 import Login from '../screens/Login'
 import Register from '../screens/Register'
@@ -214,7 +214,7 @@ class Cointainer extends Component {
                 handleChange={this.postChange} />
             )} />
           }
-
+          <Route render={() => <Redirect to={{ pathname: "/" }} />} />
         </Switch>
       </main>
     )
