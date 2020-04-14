@@ -85,8 +85,8 @@ html, body {
   background-color: white;
 }
 
-.register-button {
-  margin-top: 2% !important;
+.forms button {
+  margin-top: 2%;
 }
 .auth-forms button {
   margin-top: 5%;

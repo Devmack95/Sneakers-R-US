@@ -38,7 +38,7 @@ const Register = (props) => {
           />
 
           <br />
-          <button className='register-button'>Register</button>
+          <button>Register</button>
         </form>
 
       </div>
