@@ -81,7 +81,7 @@ class Cointainer extends Component {
   authHandleChange = (e) => {
 
     const { name, value } = e.target;
-    
+
     this.setState(prevState => ({
       authFormData: {
         ...prevState.authFormData,
@@ -146,18 +146,6 @@ class Cointainer extends Component {
 
         <Switch>
 
-          <Route exact path="/login" render={(props) => (
-            <Login
-              handleLogin={this.handleLogin}
-              handleChange={this.authHandleChange}
-              formData={this.state.authFormData} />)} />
-
-          <Route exact path="/register" render={(props) => (
-            <Register
-              handleRegister={this.handleRegister}
-              handleChange={this.authHandleChange}
-              formData={this.state.authFormData} />)} />
-
           {this.state.sneakers && this.state.accessories &&
             <Route exact path={'/'} render={(props) => (
               <Home
@@ -166,8 +154,20 @@ class Cointainer extends Component {
             )} />
           }
 
+          <Route path="/login" render={(props) => (
+            <Login
+              handleLogin={this.handleLogin}
+              handleChange={this.authHandleChange}
+              formData={this.state.authFormData} />)} />
+
+          <Route path="/register" render={(props) => (
+            <Register
+              handleRegister={this.handleRegister}
+              handleChange={this.authHandleChange}
+              formData={this.state.authFormData} />)} />
+
           {this.state.sneakers && this.state.accessories &&
-            <Route exact path={'/user-page'} render={(props) => (
+            <Route path={'/user-page'} render={(props) => (
               <UserPage
                 accessories={this.state.accessories}
                 sneakers={this.state.sneakers}
