@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Switch, Route, withRouter, Redirect } from 'react-router-dom'
-import Auth from './Auth'
 import Login from '../screens/Login'
 import Register from '../screens/Register'
 import Home from '../screens/Home'
@@ -189,9 +188,6 @@ class Cointainer extends Component {
                 accessories={this.state.accessories} />
             )} />
           }
-
-          <Route path={'/login'} component={Auth} />
-          <Route path={'/register'} component={Auth} />
 
           <Route path={'/create-sneaker'} render={(props) => (
             <CreateSneaker
