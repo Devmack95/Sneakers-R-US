@@ -7,8 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # User.create!(username: 'admin', email:'devon.mccalmon@yahoo.com', password: 'admin1')
-# Sneaker.destroy_all
-# Accessory.destroy_all
+Sneaker.destroy_all
+Accessory.destroy_all
 
 Sneaker.create!(brand: 'Adidas', name: "Yeezy Boost 350 V2 'Black Non-Reflective'", description: 'Brand New, Size: 11.5', image: 'https://image.goat.com/crop/750/attachments/product_template_additional_pictures/images/022/234/263/original/505488_01.jpg.jpeg?1559847643', price: 420, user_id: '1')
 Sneaker.create!(brand: 'Adidas', name: "Yeezy Boost 350 V2 'Cloud White Non-Reflective'", description: 'Brand New, Size: 11.5', image: 'https://image.goat.com/crop/750/attachments/product_template_additional_pictures/images/025/377/609/original/529368_01.jpg.jpeg?1567193788', price: 315, user_id: '1')
@@ -21,6 +21,11 @@ Sneaker.create!(brand: 'Pharrell x Adidas', name: "NMD Human Race Trail 'Friends
 Sneaker.create!(brand: 'Undefeated x Air Jordan', name: "Retro 4", description: 'Brand New, Size: 11.5', image: 'https://image.goat.com/crop/750/attachments/product_template_additional_pictures/images/023/644/347/original/16458_08.jpg.jpeg?1563400970', price: 23000, user_id: '1')
 Sneaker.create!(brand: 'OFF-WHITE x Air Jordan', name: "Retro 1 High OG 'Chicago'", description: 'Brand New, Size: 11.5', image: 'https://image.goat.com/crop/750/attachments/product_template_additional_pictures/images/008/487/309/original/136666_08.jpg.jpeg?1513115122', price: 3270, user_id: '1')
 Sneaker.create!(brand: 'OFF-WHITE x Air VaporMax', name: "The Ten", description: 'Brand New, Size: 11.5', image: 'https://image.goat.com/crop/750/attachments/product_template_additional_pictures/images/008/488/107/original/147583_08.jpg.jpeg?1513115618', price: 895, user_id: '1')
+Sneaker.create!(brand:'Air Jordan', name: "Retro 1 High OG 'Court Purple 2.0'", description: 'Brand New, Size: 11.5', image: 'https://image.goat.com/crop/750/attachments/product_template_additional_pictures/images/034/848/552/original/517360_01.jpg.jpeg?1585590009', price: 225, user_id: '1')
+Sneaker.create!(brand:'OFF-WHITE x Air Max', name: "90 'Black'", description: 'Brand New, Size: 11.5', image: 'https://image.goat.com/crop/750/attachments/product_template_additional_pictures/images/017/763/491/original/466439_01.jpg.jpeg?1547150496', price: 520, user_id: '1')
+Sneaker.create!(brand:'OFF-WHITE x Air Max', name: "90 'Desert Ore'", description: 'Brand New, Size: 11.5', image: 'https://image.goat.com/crop/750/attachments/product_template_additional_pictures/images/017/794/463/original/394710_01.jpg.jpeg?1547236891', price: 510, user_id: '1')
+Sneaker.create!(brand:'Air Fear Of God', name: "1 'The Atmosphere'", description: 'Brand New, Size: 11.5', image: 'https://image.goat.com/crop/750/attachments/product_template_additional_pictures/images/024/154/565/original/497650_01.jpg.jpeg?1564600373', price: 915, user_id: '1')
+Sneaker.create!(brand:'Balenciaga Speed Trainer', name: "Mid 'Logo Print'", description: 'Brand New, Size: 11.5', image: 'https://image.goat.com/crop/750/attachments/product_template_pictures/images/012/727/710/original/506336_W0650_1006.png.png', price: 675, user_id: '1')
 
 p "#{Sneaker.count} sneakers we're created"
 
@@ -34,5 +39,6 @@ Accessory.create!(name: 'Giant 16pair Shoe Box', description: 'Boxes can be made
 Accessory.create!(name: 'Large Drop-Front Shoe Box', description: 'The clear window of our Drop-Front Shoe Box lets you immediately see the pair stored inside.', image: 'https://cdn-fsly.yottaa.net/55df7e1a2bb0ac7d800040c2/ecdf7130ef10013390340a3ba3fac80a.yottaa.net/v~4b.fd/catalogimages/301960/10048827Shoe-Box-Mens-DropFront-Tran.jpg?width=1200&height=1200&align=center&yocs=2C_4c_2E_2H_', price: 10, user_id: '1')
 Accessory.create!(name: 'Jason Markk Essential Kit', description: 'signature kit which includes a 4 oz. bottle of our Premium Shoe Cleaning solution and Standard Brush. The perfect pairing to get you started or to maintain your cleaning fix.', image: 'https://cdn.shopify.com/s/files/1/0070/3633/8260/products/jm_products_essential_kit_f8c8b29c-a6ff-4458-a3bc-38841f26fa11_1080x.jpg?v=1583280202', price: 16, user_id: '1')
 Accessory.create!(name: 'The Combo Pack Sneaker Shield', description: 'Never crease sneaker technology', image: 'https://www.sneakershields.com/wp-content/uploads/2016/11/combo.jpg', price: 34, user_id: '1')
+Accessory.create!(name: 'JASON MARKK TRAVEL SHOE CLEANING KIT', description: 'The perfect kit to take on the go. Meets TSA Requirements', image: 'https://i.imgur.com/pSqd71V.png', price: 19.95, user_id: '1')
 
 p "#{Accessory.count} accessroies we're created"
