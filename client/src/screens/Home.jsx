@@ -5,7 +5,7 @@ const Home = (props) => {
   const { accessories, sneakers } = props
 
   const showSneakers = () => {
-    return sneakers.slice(0, 6).map((sneaker) => {
+    return sneakers.slice(0, 8).map((sneaker) => {
       return (
         <div className ='mini-img' key={sneaker.id}>
           <img src={sneaker.image} alt={sneaker.name} />
@@ -15,7 +15,7 @@ const Home = (props) => {
   }
 
   const showAccessories = () => {
-    return accessories.slice(0, 6).map((accessory) => {
+    return accessories.slice(0, 8).map((accessory) => {
       return (
         <div className ='mini-img' key={accessory.id}>
           <img src={accessory.image} alt={accessory.name} />
