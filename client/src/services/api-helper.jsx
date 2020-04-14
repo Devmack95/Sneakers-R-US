@@ -57,9 +57,8 @@ export const getUserById = async (id) => {
     throw error
   }
 }
-// ====================================
-// ============= Auth =================
-// ====================================
+
+// ============================= Auth ==================================
 
 export const loginUser = async (loginData) => {
   const resp = await api.post('/auth/login', { auth: loginData });
