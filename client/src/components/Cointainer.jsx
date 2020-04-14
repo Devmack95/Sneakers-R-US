@@ -21,10 +21,8 @@ import {
   removeToken,
   postSneaker,
   destroySneaker,
-  updateSneaker,
   postAccessory,
   destroyAccessory,
-  updateAccessory
 }
   from '../services/api-helper'
 
@@ -142,12 +140,12 @@ class Cointainer extends Component {
 
     return (
       <main>
-          <Nav
-            User={this.state.currentUser}
-            signOut={this.handleLogout}
-          />
+        <Nav
+          User={this.state.currentUser}
+          signOut={this.handleLogout}
+        />
         <Switch>
-          
+
 
           <Route exact path="/login" render={(props) => (
             <Login
@@ -172,10 +170,10 @@ class Cointainer extends Component {
           {this.state.sneakers && this.state.accessories &&
             <Route exact path={'/user-page'} render={(props) => (
               <UserPage
-              accessories={this.state.accessories}
-              sneakers={this.state.sneakers}
-              deleteSneaker={this.deleteSneaker}
-              deleteAccessory={this.deleteAccessory}/>
+                accessories={this.state.accessories}
+                sneakers={this.state.sneakers}
+                deleteSneaker={this.deleteSneaker}
+                deleteAccessory={this.deleteAccessory} />
             )} />
           }
 
@@ -208,10 +206,11 @@ class Cointainer extends Component {
               handleSubmit={this.createAccessory} />
           )} />
 
-          {this.state.sneakers &&
+          {this.state.sneakers && this.state.accessories &&
             <Route path={'/edit-post'} render={(props) => (
               <EditPost
                 sneakers={this.state.sneakers}
+                accessories={this.state.accessories}
                 postData={this.state.postData}
                 handleChange={this.postChange} />
             )} />

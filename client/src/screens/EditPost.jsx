@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { updateSneaker } from '../services/api-helper'
+import { updateSneaker, updateAccessory } from '../services/api-helper'
 
 class EditPost extends Component {
   constructor(props) {
@@ -12,7 +12,8 @@ class EditPost extends Component {
         image: '',
         price: ''
       },
-      selectedSneaker: ''
+      selectedSneaker: '',
+      selectedAccessory: ''
     }
   }
 
@@ -36,29 +37,60 @@ class EditPost extends Component {
     this.props.history.push('/user-page')
   }
 
+  updateAccessory = async (accessoryItem) => {
+    const updatedAccessory = await updateAccessory(this.state.postData, accessoryItem.id)
+    this.setState(prevState => ({
+      accessorys: prevState.accessorys.map(accessory => {
+        return accessory.id === accessoryItem.id ? updatedAccessory : accessory
+      })
+    }))
+    this.props.history.push('/user-page')
+  }
+
   onChange = (e) => {
     this.setState({
-      selectedSneaker: e.target.value
+      selectedSneaker: e.target.value,
+      selectedAccessory: e.target.value
     })
     this.props.sneakers.map((sneaker) => {
       if (this.state.selectedSneaker === sneaker.name) {
-          this.setState({
-            postData: {
-              brand: sneaker.brand,
-              name: sneaker.name,
-              description: sneaker.description,
-              image: sneaker.image,
-              price: sneaker.price
-            }
-          })
+        this.setState({
+          postData: {
+            brand: sneaker.brand,
+            name: sneaker.name,
+            description: sneaker.description,
+            image: sneaker.image,
+            price: sneaker.price
+          }
+        })
+      }
+    })
+    this.props.accessories.map((accessory) => {
+      if (this.state.selectedAccessory === accessory.name) {
+        this.setState({
+          postData: {
+            name: accessory.name,
+            description: accessory.description,
+            image: accessory.image,
+            price: accessory.price
+          }
+        })
       }
     })
   }
 
-  show = () => {
+  sneakersOptions = () => {
     return this.props.sneakers.map((sneaker) => {
       return (
         <option key={sneaker.id} value={sneaker.name}>{sneaker.name}</option>
+      )
+    })
+  }
+
+  accessoriesOptions = () => {
+    return this.props.accessories.map((accessory) => {
+      return (
+        <option key={accessory.id} value={accessory.name}>{accessory.name}</option>
       )
     })
   }
@@ -71,7 +103,9 @@ class EditPost extends Component {
           <h1>Did Something Change?</h1>
 
           <select value={this.state.selectedSneaker} onChange={this.onChange}>
-            {this.show()}
+            <option>Select an Item</option>
+            {this.sneakersOptions()}
+            {this.accessoriesOptions()}
           </select>
 
           <form>

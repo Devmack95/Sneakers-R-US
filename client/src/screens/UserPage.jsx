@@ -10,7 +10,7 @@ const UserPage = (props) => {
       return (
         <div className='items-box' key={sneaker.id}>
           <img src={sneaker.image} alt={sneaker.name} />
-          <Link to={'edit-post'}><button>Edit Post</button></Link>
+          <br />
           <button onClick={() => {props.deleteSneaker(sneaker)}}>Delete</button>
         </div>
       )
@@ -22,7 +22,7 @@ const UserPage = (props) => {
       return (
         <div className='items-box' key={accessory.id}>
           <img src={accessory.image} alt={accessory.name} />
-          <Link to={'edit-post'}><button>Edit Post</button></Link>
+          <br />
           <button onClick={() => {props.deleteAccessory(accessory)}}>Delete</button>
         </div>
       )
@@ -35,6 +35,7 @@ const UserPage = (props) => {
         <h1>User Page</h1>
         <Link to={'/create-sneaker'}><button>New Sneaker</button></Link>
         <Link to={'/create-accessory'}><button>New Accessory</button></Link>
+        <Link to={'edit-post'}><button>Edit Post</button></Link>
       </div>
 
       <div className='items-container'>
