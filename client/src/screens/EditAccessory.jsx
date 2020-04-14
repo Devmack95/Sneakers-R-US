@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { updateAccessory } from '../services/api-helper'
 
 class EditAccessory extends Component {
   constructor(props) {
@@ -9,7 +8,8 @@ class EditAccessory extends Component {
         name: '',
         description: '',
         image: '',
-        price: ''
+        price: '',
+        id: ''
       },
       selectedAccessory: ''
     }
@@ -25,28 +25,19 @@ class EditAccessory extends Component {
     }))
   }
 
-  updateAccessory = async (accessoryItem) => {
-    const updatedAccessory = await updateAccessory(this.state.postData, accessoryItem.id)
-    this.setState(prevState => ({
-      accessorys: prevState.accessorys.map(accessory => {
-        return accessory.id === accessoryItem.id ? updatedAccessory : accessory
-      })
-    }))
-    this.props.history.push('/user-page')
-  }
-
   onChange = (e) => {
     this.setState({
       selectedAccessory: e.target.value
     })
     this.props.accessories.map((accessory) => {
-      if (this.state.selectedAccessory === accessory.name) {
+      if (e.target.value === accessory.name) {
         this.setState({
           postData: {
             name: accessory.name,
             description: accessory.description,
             image: accessory.image,
-            price: accessory.price
+            price: accessory.price,
+            id: accessory.id
           }
         })
       }
@@ -75,7 +66,7 @@ class EditAccessory extends Component {
 
           <form onSubmit={(e) => {
             e.preventDefault()
-            this.updateSneaker(this.selectedAccessory)
+            this.props.putAccessory(this.state.postData)
           }}>
 
             <h3>Name</h3>

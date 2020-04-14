@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import { updateSneaker } from '../services/api-helper'
 
-class EditPost extends Component {
+class EditSneaker extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -10,7 +9,8 @@ class EditPost extends Component {
         name: '',
         description: '',
         image: '',
-        price: ''
+        price: '',
+        id: ''
       },
       selectedSneaker: ''
     }
@@ -26,29 +26,20 @@ class EditPost extends Component {
     }))
   }
 
-  updateSneaker = async (sneakerItem) => {
-    const updatedSneaker = await updateSneaker(this.state.postData, sneakerItem.id)
-    this.setState(prevState => ({
-      sneakers: prevState.sneakers.map(sneaker => {
-        return sneaker.id === sneakerItem.id ? updatedSneaker : sneaker
-      })
-    }))
-    this.props.history.push('/user-page')
-  }
-
   onChange = (e) => {
     this.setState({
       selectedSneaker: e.target.value
     })
     this.props.sneakers.map((sneaker) => {
-      if (this.state.selectedSneaker === sneaker.name) {
+      if (e.target.value === sneaker.name) {
         this.setState({
           postData: {
             brand: sneaker.brand,
             name: sneaker.name,
             description: sneaker.description,
             image: sneaker.image,
-            price: sneaker.price
+            price: sneaker.price,
+            id: sneaker.id
           }
         })
       }
@@ -77,7 +68,7 @@ class EditPost extends Component {
 
           <form onSubmit={(e) => {
             e.preventDefault()
-            this.updateSneaker(this.selectedSneaker)
+            this.props.putSneaker(this.state.postData)
           }}>
 
             <h3>Brand</h3>
@@ -129,4 +120,4 @@ class EditPost extends Component {
   }
 }
 
-export default EditPost
+export default EditSneaker

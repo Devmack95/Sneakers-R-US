@@ -23,7 +23,7 @@ export const destroySneaker = async (id) => {
 }
 
 export const updateSneaker = async (item, id) => {
-  const resp = await api.put(`sneakers/${id}`, { sneakers: item })
+  const resp = await api.put(`sneakers/${id}`, { sneaker: item })
   return resp.data
 }
 
@@ -44,14 +44,13 @@ export const destroyAccessory = async (id) => {
 }
 
 export const updateAccessory = async (item, id) => {
-  const resp = await api.put(`accessories/${id}`, { accessories: item })
+  const resp = await api.put(`accessories/${id}`, { accessory: item })
   return resp.data
 }
 
 export const getUserById = async (id) => {
   try {
     const resp = await api.get(`/users/${id}`)
-    //console.log('Data:', resp.data)
     return await resp.data.user
   } catch (error) {
     throw error

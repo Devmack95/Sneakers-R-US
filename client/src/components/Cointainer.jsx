@@ -23,6 +23,8 @@ import {
   destroySneaker,
   postAccessory,
   destroyAccessory,
+  updateSneaker,
+  updateAccessory
 }
   from '../services/api-helper'
 
@@ -112,6 +114,16 @@ class Cointainer extends Component {
     }))
   }
 
+  putAccessory = async (accessoryItem) => {
+    const updatedAccessory = await updateAccessory(accessoryItem, accessoryItem.id)
+    this.setState(prevState => ({
+      accessories: prevState.accessories.map(accessory => {
+        return accessory.id === updatedAccessory.id ? updatedAccessory : accessory
+      })
+    }))
+    this.props.history.push('/user-page')
+  }
+
   //==================================== Sneakers =====================================
 
   getSneakers = async () => {
@@ -132,6 +144,17 @@ class Cointainer extends Component {
     this.setState(prevState => ({
       sneakers: prevState.sneakers.filter(singleSneaker => singleSneaker.id !== sneakers.id)
     }))
+  }
+
+  putSneaker = async (sneakerItem) => {
+    console.log(sneakerItem)
+    const updatedSneaker = await updateSneaker(sneakerItem, sneakerItem.id)
+    this.setState(prevState => ({
+      sneakers: prevState.sneakers.map(sneaker => {
+        return sneaker.id === updatedSneaker.id ? updatedSneaker : sneaker
+      })
+    }))
+    this.props.history.push('/user-page')
   }
 
   render() {
@@ -205,8 +228,9 @@ class Cointainer extends Component {
           {this.state.sneakers && this.state.accessories &&
             <Route path={'/edit-sneaker'} render={(props) => (
               <EditSneaker
+                putSneaker={this.putSneaker}
                 sneakers={this.state.sneakers}
-                accessories={this.state.accessories}
+                // accessories={this.state.accessories}
                 postData={this.state.postData}
                 handleChange={this.postChange} />
             )} />
@@ -215,13 +239,14 @@ class Cointainer extends Component {
           {this.state.accessories &&
             <Route path={'/edit-accessory'} render={(props) => (
               <EditAccessory
-                accessories={this.state.accessories}
-                postData={this.state.postData} />
+              accessories={this.state.accessories}
+              postData={this.state.postData}
+              putAccessory={this.putAccessory}/>
             )} />
           }
 
-          {/* <Route render={() => <Redirect to={{ pathname: "/" }} />} /> */}
-          
+          <Route render={() => <Redirect to={{ pathname: "/" }} />} />
+
         </Switch>
       </main>
     )
