@@ -117,6 +117,26 @@ html, body {
   width: 50%;
 }
 
+.users_nav {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+.users_nav button {
+  border: none;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  color: #000000;
+  padding: 0;
+}
+
+.users_nav button:hover {
+  color: orangered;
+  text-decoration: underline overline;
+}
+
 .items-container {
   display: grid;
   grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );

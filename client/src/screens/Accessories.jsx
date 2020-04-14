@@ -19,11 +19,11 @@ const Accessories = (props) => {
 
   return (
     <>
-      <h1>Accessories Page</h1>
-
+      
       <div className='items-container'>
         {show()}
       </div>
+      
     </>
   )
 }
