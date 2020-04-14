@@ -17,7 +17,7 @@ const Nav = (props) => {
         {props.User ?
           <>
             <Link to='/user-page'>{props.User.username}</Link>
-            <button onClick={props.signOut}>LogOut</button>
+            <button className='logout' onClick={props.signOut}>LogOut</button>
           </>
           :
           <Link to='/login'>Login</Link>

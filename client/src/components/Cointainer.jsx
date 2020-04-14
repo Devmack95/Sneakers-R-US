@@ -53,7 +53,7 @@ class Cointainer extends Component {
   handleLogin = async () => {
     const currentUser = await loginUser(this.state.authFormData);
     this.setState({ currentUser })
-    this.props.history.push('/')
+    this.props.history.push('/user-page')
   }
 
   handleRegister = async (e) => {
@@ -75,6 +75,7 @@ class Cointainer extends Component {
       currentUser: null
     })
     removeToken();
+    this.props.history.push('/')
   }
 
   authHandleChange = (e) => {
@@ -86,11 +87,6 @@ class Cointainer extends Component {
       }
     }));
   }
-
-  // user = async () => {
-  //   const user_data = await getUserById()
-  //   this.setState({ user_data })
-  // }
 
   //================================== Accessories =====================================
 
