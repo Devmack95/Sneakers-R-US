@@ -101,7 +101,7 @@ class Cointainer extends Component {
     this.setState(prevState => ({
       accessories: [newAccessory, ...prevState.accessories]
     }))
-    this.props.history.push('/accessories')
+    this.props.history.push('/user-page')
   }
 
   deleteAccessory = async (accessories) => {
@@ -123,7 +123,7 @@ class Cointainer extends Component {
     this.setState(prevState => ({
       sneakers: [newSneaker, ...prevState.sneakers]
     }))
-    this.props.history.push('/sneakers')
+    this.props.history.push('/user-page')
   }
 
   deleteSneaker = async (sneakers) => {
