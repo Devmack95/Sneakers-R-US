@@ -16,7 +16,6 @@ import {
   getAllSneakers,
   getAllAccessories,
   verifyUser,
-  getUserById,
   loginUser,
   registerUser,
   removeToken,
@@ -47,7 +46,6 @@ class Cointainer extends Component {
   componentDidMount() {
     this.getSneakers()
     this.getAccessories()
-    this.user()
     this.handleVerify();
   }
   handleLoginButton = () => {
@@ -57,6 +55,7 @@ class Cointainer extends Component {
   handleLogin = async () => {
     const currentUser = await loginUser(this.state.authFormData);
     this.setState({ currentUser })
+    this.props.history.push('/')
   }
 
   handleRegister = async (e) => {
@@ -73,7 +72,7 @@ class Cointainer extends Component {
   }
 
   handleLogout = () => {
-    localStorage.removeItem("jwt");
+    localStorage.removeItem('authToken');
     this.setState({
       currentUser: null
     })
@@ -90,10 +89,10 @@ class Cointainer extends Component {
     }));
   }
 
-  user = async () => {
-    const user_data = await getUserById()
-    this.setState({ user_data })
-  }
+  // user = async () => {
+  //   const user_data = await getUserById()
+  //   this.setState({ user_data })
+  // }
 
   //================================== Accessories =====================================
 
@@ -111,7 +110,7 @@ class Cointainer extends Component {
   }
 
   deleteAccessory = async (accessories) => {
-    await destroySneaker(accessories.id)
+    await destroyAccessory(accessories.id)
     this.setState(prevState => ({
       accessories: prevState.accessories.filter(singleAccessory => singleAccessory.id !== accessories.id)
     }))
@@ -139,23 +138,16 @@ class Cointainer extends Component {
     }))
   }
 
-  // updateSneaker = async (sneakerItem) => {
-  //   const updatedSneaker = await updateSneaker(id, sneakers)
-  //   this.setState(prevState => ({
-  //     sneakers: prevState.sneakers.map(sneaker => {
-  //       return sneaker.id === sneakers.id ? updatedSneaker : sneaker
-  //     })
-  //   }))
-  //   this.props.history.push('/user-page')
-  // }
-
   render() {
-
-    // console.log(this.state.currentUser)
 
     return (
       <main>
+          <Nav
+            User={this.state.currentUser}
+            signOut={this.handleLogout}
+          />
         <Switch>
+          
 
           <Route exact path="/login" render={(props) => (
             <Login
@@ -180,9 +172,10 @@ class Cointainer extends Component {
           {this.state.sneakers && this.state.accessories &&
             <Route exact path={'/user-page'} render={(props) => (
               <UserPage
-                accessories={this.state.accessories}
-                sneakers={this.state.sneakers}
-                deleteSneaker={this.deleteSneaker} />
+              accessories={this.state.accessories}
+              sneakers={this.state.sneakers}
+              deleteSneaker={this.deleteSneaker}
+              deleteAccessory={this.deleteAccessory}/>
             )} />
           }
 
@@ -224,12 +217,12 @@ class Cointainer extends Component {
             )} />
           }
 
-          {this.state.currentUser &&
+          {/* {this.state.currentUser &&
             <Nav
               User={this.state.currentUser}
               signOut={this.handleLogout}
             />
-          }
+          } */}
 
         </Switch>
       </main>

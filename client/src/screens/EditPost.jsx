@@ -11,7 +11,8 @@ class EditPost extends Component {
         description: '',
         image: '',
         price: ''
-      }
+      },
+      selectedSneaker: ''
     }
   }
 
@@ -35,10 +36,29 @@ class EditPost extends Component {
     this.props.history.push('/user-page')
   }
 
+  onChange = (e) => {
+    this.setState({
+      selectedSneaker: e.target.value
+    })
+    this.props.sneakers.map((sneaker) => {
+      if (this.state.selectedSneaker === sneaker.name) {
+          this.setState({
+            postData: {
+              brand: sneaker.brand,
+              name: sneaker.name,
+              description: sneaker.description,
+              image: sneaker.image,
+              price: sneaker.price
+            }
+          })
+      }
+    })
+  }
+
   show = () => {
     return this.props.sneakers.map((sneaker) => {
       return (
-          <option value={sneaker.name}>{sneaker.name}</option>
+        <option key={sneaker.id} value={sneaker.name}>{sneaker.name}</option>
       )
     })
   }
@@ -49,9 +69,11 @@ class EditPost extends Component {
       <div className='editPost'>
         <div className='postForm'>
           <h1>Did Something Change?</h1>
-          <select>
+
+          <select value={this.state.selectedSneaker} onChange={this.onChange}>
             {this.show()}
           </select>
+
           <form>
             <h3>Brand</h3>
             <input

@@ -46,7 +46,7 @@ class SneakersController < ApplicationController
 
   # DELETE /sneakers/1
   def destroy
-    @sneaker.destroy
+    @sneaker.destroy!
   end
 
   private
