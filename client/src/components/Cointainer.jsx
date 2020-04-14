@@ -215,6 +215,7 @@ class Cointainer extends Component {
             )} />
           }
           <Route render={() => <Redirect to={{ pathname: "/" }} />} />
+          
         </Switch>
       </main>
     )
