@@ -195,8 +195,8 @@ class Cointainer extends Component {
                 accessories={this.state.accessories}
                 sneakers={this.state.sneakers}
                 deleteSneaker={this.deleteSneaker}
-                deleteAccessory={this.deleteAccessory} 
-                User={this.state.currentUser}/>
+                deleteAccessory={this.deleteAccessory}
+                User={this.state.currentUser} />
             )} />
           }
 
@@ -231,18 +231,18 @@ class Cointainer extends Component {
               <EditSneaker
                 putSneaker={this.putSneaker}
                 sneakers={this.state.sneakers}
-                // accessories={this.state.accessories}
                 postData={this.state.postData}
-                handleChange={this.postChange} />
+                User={this.state.currentUser} />
             )} />
           }
 
           {this.state.accessories &&
             <Route path={'/edit-accessory'} render={(props) => (
               <EditAccessory
-              accessories={this.state.accessories}
-              postData={this.state.postData}
-              putAccessory={this.putAccessory}/>
+                accessories={this.state.accessories}
+                postData={this.state.postData}
+                putAccessory={this.putAccessory}
+                User={this.state.currentUser} />
             )} />
           }
 

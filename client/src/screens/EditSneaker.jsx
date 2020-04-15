@@ -48,9 +48,13 @@ class EditSneaker extends Component {
 
   sneakersOptions = () => {
     return this.props.sneakers.map((sneaker) => {
-      return (
-        <option key={sneaker.id} value={sneaker.name}>{sneaker.name}</option>
-      )
+      if (this.props.User.id === sneaker.user_id) {
+        return (
+          <option key={sneaker.id} value={sneaker.name}>{sneaker.name}</option>
+        )
+      } else {
+        return null
+      }
     })
   }
 

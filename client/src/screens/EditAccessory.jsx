@@ -46,9 +46,13 @@ class EditAccessory extends Component {
 
   accessoriesOptions = () => {
     return this.props.accessories.map((accessory) => {
-      return (
-        <option key={accessory.id} value={accessory.name}>{accessory.name}</option>
-      )
+      if (this.props.User.id === accessory.user_id) {
+        return (
+          <option key={accessory.id} value={accessory.name}>{accessory.name}</option>
+        )
+      } else {
+        return null
+      }
     })
   }
 
