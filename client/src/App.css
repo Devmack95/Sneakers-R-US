@@ -151,6 +151,10 @@ html, body {
   width: 50%;
 }
 
+.items-box:hover {
+  border: 3px solid orangered;
+}
+
 .postForm {
   border: 2px solid black;
   width: 30%;
