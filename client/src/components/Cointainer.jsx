@@ -195,7 +195,8 @@ class Cointainer extends Component {
                 accessories={this.state.accessories}
                 sneakers={this.state.sneakers}
                 deleteSneaker={this.deleteSneaker}
-                deleteAccessory={this.deleteAccessory} />
+                deleteAccessory={this.deleteAccessory} 
+                User={this.state.currentUser}/>
             )} />
           }
 

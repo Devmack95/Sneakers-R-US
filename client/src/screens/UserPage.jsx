@@ -7,25 +7,33 @@ const UserPage = (props) => {
 
   const showSneakers = () => {
     return sneakers.map((sneaker) => {
-      return (
-        <div className='items-box' key={sneaker.id}>
-          <img src={sneaker.image} alt={sneaker.name} />
-          <br />
-          <button onClick={() => {props.deleteSneaker(sneaker)}}>Delete</button>
-        </div>
-      )
+      if (props.User.id === sneaker.user_id) {
+        return (
+          <div className='items-box' key={sneaker.id}>
+            <img src={sneaker.image} alt={sneaker.name} />
+            <br />
+            <button onClick={() => {props.deleteSneaker(sneaker)}}>Delete</button>
+          </div>
+        )
+      } else {
+        return null
+      }
     })
   }
 
   const showAccessories = () => {
     return accessories.map((accessory) => {
-      return (
-        <div className='items-box' key={accessory.id}>
-          <img src={accessory.image} alt={accessory.name} />
-          <br />
-          <button onClick={() => {props.deleteAccessory(accessory)}}>Delete</button>
-        </div>
-      )
+      if (props.User.id === accessory.user_id) {
+        return (
+          <div className='items-box' key={accessory.id}>
+            <img src={accessory.image} alt={accessory.name} />
+            <br />
+            <button onClick={() => { props.deleteAccessory(accessory) }}>Delete</button>
+          </div>
+        )
+      } else {
+        return null
+      }
     })
   }
 
